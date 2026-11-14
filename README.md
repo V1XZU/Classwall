@@ -14,4 +14,5 @@ A cookie is data saved in the user's browser and can last for days. A session is
 A cookie is stored in the browser. A session is stored on the server, and the browser only keeps the session ID (PHPSESSID).
 
 3. Why do we use prepared statements?
+
 They keep user input separate from the SQL code, which prevents SQL injection.
