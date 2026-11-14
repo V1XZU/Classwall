@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             setcookie('author_name', $author, [
                 'expires'  => time() + 60 * 60 * 24 * 30,
                 'path'     => '/',
-                'httponly' => true,
                 'samesite' => 'Lax',
             ]);
         } else {
@@ -83,7 +82,7 @@ $savedName = $_COOKIE['author_name'] ?? '';
         </label>
         <label>
             <input type="checkbox" name="remember" <?= $savedName !== '' ? 'checked' : '' ?>>
-            Remember my name
+            Remember me
         </label><br><br>
         <button type="submit">Post</button>
     </form>
@@ -107,5 +106,8 @@ $savedName = $_COOKIE['author_name'] ?? '';
             <p><?= nl2br(htmlspecialchars($m['body'], ENT_QUOTES, 'UTF-8')) ?></p>
         </div>
     <?php endforeach; ?>
+      <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+       <script>eruda.init();</script>
+
 </body>
 </html>
