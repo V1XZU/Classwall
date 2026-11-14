@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             setcookie('author_name', $author, [
                 'expires'  => time() + 60 * 60 * 24 * 30,
                 'path'     => '/',
+                'httponly' => true,      
                 'samesite' => 'Lax',
             ]);
         } else {
@@ -105,9 +106,6 @@ $savedName = $_COOKIE['author_name'] ?? '';
             <span class="meta"> &middot; <?= htmlspecialchars($m['created_at'], ENT_QUOTES, 'UTF-8') ?></span>
             <p><?= nl2br(htmlspecialchars($m['body'], ENT_QUOTES, 'UTF-8')) ?></p>
         </div>
-    <?php endforeach; ?>
-      <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-       <script>eruda.init();</script>
-
+    <?php endforeach; ?> 
 </body>
 </html>
