@@ -1,9 +1,9 @@
 <?php
-$host     = 'localhost';
-$port     = '5432';
-$dbname   = 'classwall';
-$user     = 'postgres';
-$password = 'your_password_here';
+$host     = getenv('DB_HOST') ?: 'localhost';
+$port     = getenv('DB_PORT') ?: '5432';
+$dbname   = getenv('DB_NAME') ?: 'classwall';
+$user     = getenv('DB_USER') ?: 'postgres';
+$password = getenv('DB_PASSWORD') ?: 'your_password_here';
 
 try {
     $pdo = new PDO(
