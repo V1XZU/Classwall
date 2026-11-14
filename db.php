@@ -7,7 +7,7 @@ $password = 'your_password_here';
 
 try {
     $pdo = new PDO(
-        "pgsql:host=$host;port=$port;dbname=$dbname",
+        "pgsql:host=$host;port=$port;dbname=$dbname;sslmode=require",
         $user,
         $password,
         [
