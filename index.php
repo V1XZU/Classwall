@@ -60,18 +60,29 @@ $savedName = $_COOKIE['author_name'] ?? '';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Class Wall</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 0 12px; background: #f4f6f8; }
-        h1 { margin-bottom: 4px; }
-        .visits { color: #555; margin-top: 0; }
-        form, .msg { background: #fff; padding: 12px; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
-        input[type=text], textarea { width: 100%; padding: 8px; margin: 4px 0 8px; box-sizing: border-box; }
-        button { padding: 8px 14px; cursor: pointer; }
-        .meta { color: #777; font-size: 12px; }
+        <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 0 12px; background: #f4f6f8; }
+    h1 { margin-bottom: 4px; }
+    .visits { color: #555; margin-top: 0; }
+    h1, .visits { text-align: center; }
+    form, .msg { background: #fff; padding: 12px; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+    input[type=text], textarea { width: 100%; padding: 8px; margin: 4px 0 8px; box-sizing: border-box; }
+    button { padding: 8px 14px; cursor: pointer; }
+    .meta { color: #777; font-size: 12px; }
+
+    @media (min-width: 900px) {
+        body { max-width: 1000px; }
+        .layout { display: grid; grid-template-columns: 340px 1fr; gap: 20px; align-items: start; }
+        .side { position: sticky; top: 20px; }
+    }
+</style>
     </style>
 </head>
 <body>
     <h1>Class Wall</h1>
     <p class="visits">You've visited <?= (int) $_SESSION['visits'] ?> time(s) this session.</p>
+    <div class="layout">
+    <div class="side">
 
     <form method="POST" action="index.php">
         <label>Name
@@ -96,6 +107,8 @@ $savedName = $_COOKIE['author_name'] ?? '';
             <a href="index.php">Clear</a>
         <?php endif; ?>
     </form>
+        </div>
+        <div class="board">
 
     <?php if (!$messages): ?>
         <p>No messages found.</p>
@@ -107,5 +120,7 @@ $savedName = $_COOKIE['author_name'] ?? '';
             <p><?= nl2br(htmlspecialchars($m['body'], ENT_QUOTES, 'UTF-8')) ?></p>
         </div>
     <?php endforeach; ?> 
+        </div>
+        </div>
 </body>
 </html>
